@@ -34,7 +34,6 @@ public class App {
         }
     }
 
-
     /**
      * There's often a case when we can declare a generic method using either wildcards or type parameters.
      * https://www.baeldung.com/java-generics-type-parameter-vs-wildcard
@@ -47,7 +46,6 @@ public class App {
      * http://www.angelikalanger.com/GenericsFAQ/FAQSections/TypeParameters.html#FAQ106
      */
 
-
     /* **********************************************
      ******* ALL TESTS MUST PASS IN THE END *********
      **** WRITE YOUR 4 static void METHODS HERE: ****
@@ -55,19 +53,30 @@ public class App {
      */
 
     /**
-     * Hint: Map.merge() - One method to rule them all
-     * https://nurkiewicz.com/2019/03/mapmerge-one-method-to-rule-them-all.html
+     * Wildcard implementation
      */
-    static <> void {
+    static void incrementByOneWildcard(Map<?, Integer> map, Object key) {
+        map.merge(key, 1, Integer::sum);
     }
 
-    static void {
+    /**
+     * Type parameter implementation
+     */
+    static <E extends Enum<E>> void incrementByOneTypeParam(Map<E, Integer> map, E key) {
+        map.merge(key, 1, Integer::sum);
     }
 
-    static <> void {
+    /**
+     * Wildcard implementation with default value
+     */
+    static void incrementByOneWithDefaultWildcard(Map<?, Integer> map, Object key, int defaultValue) {
+        map.merge(key, 1, Integer::sum);
     }
 
-    static void {
+    /**
+     * Type parameter implementation with default value
+     */
+    static <E extends Enum<E>> void incrementByOneWithDefaultTypeParam(Map<E, Integer> map, E key, int defaultValue) {
+        map.merge(key, 1, Integer::sum);
     }
 }
-
